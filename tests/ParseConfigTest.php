@@ -34,4 +34,13 @@ class ParseConfigTest extends TestCase
     {
         $this->assertEquals(['param' => ''], ParseConfig::parse("param="));
     }
+
+    /**
+     * parse nested key
+     */
+    public function testParseNestedOneLine()
+    {
+        $this->assertEquals(['param' => ['nested' => 'value']], ParseConfig::parse("param.nested=value"));
+        $this->assertEquals(['param' => ['nested' => ['2' => 'value']]], ParseConfig::parse("param.nested.2=value"));
+    }
 }
