@@ -47,6 +47,10 @@ class ParseConfig
 
         [$key, $value] = explode("=", $line, 2);
 
+        if ($value == 'true' || $value == 'false') {
+            $value = (bool)$value;
+        }
+
         return self::parseKey($key . ".", $value);
     }
 

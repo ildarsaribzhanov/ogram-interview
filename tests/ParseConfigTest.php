@@ -64,11 +64,40 @@ class ParseConfigTest extends TestCase
         $str = "
         param1.in1=val11
         param1.in2=val12
+        param1.num=200
         param2.in1=val2";
 
         $this->assertEquals([
-            'param1' => ['in1' => 'val11', 'in2' => 'val12'],
+            'param1' => ['in1' => 'val11', 'in2' => 'val12', 'num' => 200],
             'param2' => ['in1' => 'val2']
         ], ParseConfig::parse($str));
+    }
+
+    /**
+     * Test string
+     */
+    public function testNeedle()
+    {
+        $str = "db.user=root
+            db.password=
+            debug=true
+            passwrod.manager.secret.key=adaD@d3D2D2=";
+
+        $expect = [
+            'db'       => [
+                'user'     => 'root',
+                'password' => ''
+            ],
+            'debug'    => true,
+            'passwrod' => [
+                'manager' => [
+                    'secret' => [
+                        'key' => 'adaD@d3D2D2='
+                    ]
+                ]
+            ]
+        ];
+
+        $this->assertEquals($expect, ParseConfig::parse($str));
     }
 }
