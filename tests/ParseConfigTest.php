@@ -43,4 +43,16 @@ class ParseConfigTest extends TestCase
         $this->assertEquals(['param' => ['nested' => 'value']], ParseConfig::parse("param.nested=value"));
         $this->assertEquals(['param' => ['nested' => ['2' => 'value']]], ParseConfig::parse("param.nested.2=value"));
     }
+
+    /**
+     * test many lines config
+     */
+    public function testMultiLine()
+    {
+        $str = "
+        param1=val1
+        param2=val2";
+
+        $this->assertEquals(['param1' => 'val1', 'param2' => 'val2'], ParseConfig::parse($str));
+    }
 }
