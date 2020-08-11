@@ -2,7 +2,8 @@
 
 ## Need
 Parse input string
-```db.user=root
+```
+db.user=root
 db.password=
 debug=true
 passwrod.manager.secret.key=adaD@d3D2D2=
