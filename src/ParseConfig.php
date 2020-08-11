@@ -17,6 +17,8 @@ class ParseConfig
      */
     public static function parse(string $str): array
     {
-        return [];
+        [$key, $value] = explode("=", $str, 2);
+
+        return [$key => $value];
     }
 }
