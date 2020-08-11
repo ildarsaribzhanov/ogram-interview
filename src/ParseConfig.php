@@ -17,7 +17,7 @@ class ParseConfig
      */
     public static function parse(string $str): array
     {
-        $lineList = explode("\n", $str);
+        $lineList = explode(PHP_EOL, $str);
 
         $res = [];
 
