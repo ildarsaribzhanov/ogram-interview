@@ -26,4 +26,12 @@ class ParseConfigTest extends TestCase
     {
         $this->assertEquals(['param' => 'value'], ParseConfig::parse("param=value"));
     }
+
+    /**
+     * If empty value
+     */
+    public function testEmptyValue()
+    {
+        $this->assertEquals(['param' => ''], ParseConfig::parse("param="));
+    }
 }
